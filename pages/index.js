@@ -1,7 +1,7 @@
-export default function Index() {
-    return (
-        <div>
-            <p>Hello Sketch</p>
-        </div>
-    );
-}
+const Documents = props => (
+    <div>
+        <p>Hello Sketch</p>
+    </div>
+);
+
+export default Documents;
