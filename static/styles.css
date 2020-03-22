@@ -9,3 +9,13 @@ html, body, #__next {
     margin: 0;
     padding: 0;
 }
+
+a {
+    text-decoration: none;
+    transition: all 0.15s ease 0s;
+    color: black;
+}
+
+a:hover {
+    color: rgba(0, 0, 0, 0.65);
+}
