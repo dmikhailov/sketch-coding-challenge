@@ -3,16 +3,13 @@ import Logo from "./Logo";
 import Link from "next/link";
 
 const StyledHeader = styled.div`
-    position: fixed;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-    z-index: 1;
     height: 3rem;
     display: flex;
     align-items: center;
+    background-color: white; 
     box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 5px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     padding: 0.5rem;
+    z-index: 1;
     
     & > * {
         margin-left: 0.5rem;
