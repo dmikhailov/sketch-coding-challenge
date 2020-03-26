@@ -7,6 +7,7 @@ const Meta = () => (
         <link rel="shortcut icon" href="/static/favicon@2x.png" />
         <link rel="stylesheet" type="text/css" href="/static/styles.css" />
         <link rel="stylesheet" type="text/css" href="/static/nprogress.min.css" />
+        {/*todo: change title based on page title*/}
         <title>Sketch frontend coding test</title>
     </Head>
 );
