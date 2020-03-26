@@ -1,8 +1,10 @@
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 import {useQuery} from "@apollo/react-hooks";
 import {DOCUMENT_QUERY} from "./index";
 import styled from "styled-components";
 import {DocumentEntity} from "../../../model/DocumentEntity";
+import PageContent from "../../../components/PageContent";
+import Header from "../../../components/Header";
 
 const StyledArtboard = styled.div`
     width: 100%;
@@ -20,7 +22,7 @@ const StyledArtboard = styled.div`
 
 const Artboard = () => {
     const router = useRouter()
-    const { id, artboard } = router.query;
+    const {id, artboard} = router.query;
 
     const {loading, error, data} = useQuery(DOCUMENT_QUERY, {
         variables: {id}
@@ -33,9 +35,25 @@ const Artboard = () => {
     const board = doc.getBoardById(artboard);
 
     return (
-        <StyledArtboard>
-            <img src={board.file.url} />
-        </StyledArtboard>
+        <>
+            <Header breadcrumbs={[
+                {
+                    href: "/document/[id]",
+                    as: `/document/${id}`,
+                    title: doc.name
+                },
+                {
+                    href: "/document/[id]/[artboard]",
+                    as: `/document/${id}/${artboard}`,
+                    title: board.name
+                }
+            ]}/>
+            <PageContent>
+                <StyledArtboard>
+                    <img src={board.file.url}/>
+                </StyledArtboard>
+            </PageContent>
+        </>
     )
 };
 

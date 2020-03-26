@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import Logo from "./Logo";
 import Link from "next/link";
+import Head from "next/head";
+import Meta from "./Meta";
+import React from "react";
 
 const StyledHeader = styled.div`
     height: 3rem;
@@ -32,20 +35,34 @@ const StyledSeparator = styled.div`
     background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.65) 32%, rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0.65) 68%, rgba(0, 0, 0, 0) 90%);
 `;
 
-const Header = () => (
+const DEFAULT_TITLE = "Sketch frontend coding test";
+
+const Header = (props) => (
     <StyledHeader>
+        <Meta/>
+        <Head>
+            <title>{DEFAULT_TITLE} {props.breadcrumbs ? " / " : ""} {(props.breadcrumbs || []).map((bc) => bc.title).join(" / ")}</title>
+        </Head>
+
         <Link href="/">
             <a className="logo">
                 <Logo/>
             </a>
         </Link>
-        <StyledSeparator />
-        <Link href="/document">
-            <a>Document</a>
+        <StyledSeparator/>
+
+        <Link href="/">
+            <a>All documents</a>
         </Link>
-        <Link href="/artboard">
-            <a>ArtBoard</a>
-        </Link>
+        {(props.breadcrumbs || []).map(bc => (
+            <> /
+                <Link href={bc.href} as={bc.as} key={bc.as}>
+                    <a>
+                        {bc.title}
+                    </a>
+                </Link>
+            </>
+        ))}
     </StyledHeader>
 );
 
