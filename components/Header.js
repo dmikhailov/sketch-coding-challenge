@@ -55,13 +55,13 @@ const Header = (props) => (
             <a>All documents</a>
         </Link>
         {(props.breadcrumbs || []).map(bc => (
-            <> /
-                <Link href={bc.href} as={bc.as} key={bc.as}>
+            <React.Fragment key={bc.as}> /
+                <Link href={bc.href} as={bc.as}>
                     <a>
                         {bc.title}
                     </a>
                 </Link>
-            </>
+            </React.Fragment>
         ))}
     </StyledHeader>
 );
