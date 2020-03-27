@@ -22,10 +22,13 @@ If the artboard image fits in the available space, show it in its original size.
 
 ## How to use
 
+You will need to have [node.js](https://nodejs.org/en/) installed and may need to install [XCode](https://developer.apple.com/xcode/) if you are using macOs. 
+
 ```bash
 npm install
 npm run dev
 ```
+Open [http://localhost:3000/](http://localhost:3000/) to explore.
 
 ## Week points
 
@@ -34,4 +37,4 @@ Due lack of time following things were not implemented at all or was implemented
 - some code, like ``if (loading) return <p>Loading...</p>;``, is duplicated, would be nice to extract in some generic component / level
 - some generic css code, variables, colors, sizes of paddings, for example, should be part of theme 
 - models are written in happy path way and do not take into account possibility of incomplete data
-- tests are missing
+- tests are missing :`(
