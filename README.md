@@ -1,7 +1,9 @@
 # sketch-coding-challenge
+
 This is an implementation for sketch frontend coding test
 
 ## Description
+
 We want you to develop a document viewer for Sketch documents in the cloud with the following requirements.
 
 This viewer must have two screens:
@@ -19,11 +21,14 @@ If the artboard image is bigger than the space available, it must get shrunk to 
 If the artboard image fits in the available space, show it in its original size.
 
 ## How to use
+
 ```bash
 npm install
 npm run dev
 ```
 
 ## Week points
+
 Due lack of time following things were not implemented at all or was implemented in the not perfect way:
-- ...
+
+-   ...

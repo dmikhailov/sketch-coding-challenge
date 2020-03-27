@@ -1,12 +1,12 @@
-import {useRouter} from 'next/router'
-import {useQuery} from "@apollo/react-hooks";
-import {DOCUMENT_QUERY} from "./index";
+import { useRouter } from "next/router";
+import { useQuery } from "@apollo/react-hooks";
+import { DOCUMENT_QUERY } from "./index";
 import styled from "styled-components";
-import {DocumentEntity} from "../../../model/DocumentEntity";
+import { DocumentEntity } from "../../../model/DocumentEntity";
 import PageContent from "../../../components/PageContent";
 import Header from "../../../components/Header";
 import ArtboardNav from "../../../components/ArtboardNav";
-import {useRef} from "react";
+import { useRef } from "react";
 
 const StyledArtboard = styled.div`
     width: 100%;
@@ -15,24 +15,24 @@ const StyledArtboard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    
+
     &.loading {
         .loader {
             display: block;
-        }   
+        }
         img {
             display: none;
-        }  
+        }
     }
-    
+
     img {
         max-width: 100%;
         max-height: 100%;
         object-fit: contain;
-    }  
-    
+    }
+
     .loader {
-        display: none;       
+        display: none;
         font-size: 10px;
         margin: 50px auto;
         text-indent: -9999em;
@@ -53,15 +53,15 @@ const StyledArtboard = styled.div`
         position: absolute;
         top: 0;
         left: 0;
-        content: '';
+        content: "";
     }
-    
+
     .loader:after {
         background: #f9f9f9;
         width: 75%;
         height: 75%;
         border-radius: 50%;
-        content: '';
+        content: "";
         margin: auto;
         position: absolute;
         top: 0;
@@ -69,7 +69,7 @@ const StyledArtboard = styled.div`
         bottom: 0;
         right: 0;
     }
- 
+
     @keyframes load3 {
         0% {
             transform: rotate(0deg);
@@ -83,15 +83,14 @@ const StyledArtboard = styled.div`
 const Artboard = () => {
     const artboardEl = useRef(null);
     const onLoad = () => {
-        console.log("loading");
         artboardEl.current.classList.remove("loading");
     };
 
     const router = useRouter();
-    const {id, artboard} = router.query;
+    const { id, artboard } = router.query;
 
-    const {loading, error, data} = useQuery(DOCUMENT_QUERY, {
-        variables: {id}
+    const { loading, error, data } = useQuery(DOCUMENT_QUERY, {
+        variables: { id }
     });
 
     if (loading) return <p>Loading...</p>;
@@ -102,28 +101,29 @@ const Artboard = () => {
 
     return (
         <>
-            <Header breadcrumbs={[
-                {
-                    href: "/document/[id]",
-                    as: `/document/${id}`,
-                    title: doc.name
-                },
-                {
-                    href: "/document/[id]/[artboard]",
-                    as: `/document/${id}/${artboard}`,
-                    title: board.name
-                }
-            ]}>
-            </Header>
-            <ArtboardNav list={doc.artboards} current={board}/>
+            <Header
+                breadcrumbs={[
+                    {
+                        href: "/document/[id]",
+                        as: `/document/${id}`,
+                        title: doc.name
+                    },
+                    {
+                        href: "/document/[id]/[artboard]",
+                        as: `/document/${id}/${artboard}`,
+                        title: board.name
+                    }
+                ]}
+            ></Header>
+            <ArtboardNav list={doc.artboards} current={board} />
             <PageContent>
                 <StyledArtboard className="loading" ref={artboardEl} key={artboard}>
-                    <div className="loader"/>
-                    <img onLoad={onLoad} src={board.file.url}/>
+                    <div className="loader" />
+                    <img onLoad={onLoad} src={board.file.url} />
                 </StyledArtboard>
             </PageContent>
         </>
-    )
+    );
 };
 
-export default Artboard
+export default Artboard;

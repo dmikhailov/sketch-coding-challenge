@@ -1,17 +1,16 @@
 import Link from "next/link";
-import {useQuery} from '@apollo/react-hooks';
-import {gql} from 'apollo-boost';
+import { useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 
 import Grid from "../components/Grid";
 import PageContent from "../components/PageContent";
 import DocumentPreview from "../components/DocumentPreview";
-import {DocumentEntity} from "../model/DocumentEntity";
+import { DocumentEntity } from "../model/DocumentEntity";
 import Header from "../components/Header";
-
 
 const ALL_ITEMS_QUERY = gql`
     query {
-        first : share(shortId: "Y8wDM") {
+        first: share(shortId: "Y8wDM") {
             shortId
             previewFiles {
                 thumbnails {
@@ -23,11 +22,11 @@ const ALL_ITEMS_QUERY = gql`
             }
             version {
                 document {
-                    name   
+                    name
                 }
             }
         }
-        second : share(shortId: "4W43q") {
+        second: share(shortId: "4W43q") {
             shortId
             previewFiles {
                 thumbnails {
@@ -39,7 +38,7 @@ const ALL_ITEMS_QUERY = gql`
             }
             version {
                 document {
-                    name   
+                    name
                 }
             }
         }
@@ -47,7 +46,7 @@ const ALL_ITEMS_QUERY = gql`
 `;
 
 const Documents = () => {
-    const {loading, error, data} = useQuery(ALL_ITEMS_QUERY);
+    const { loading, error, data } = useQuery(ALL_ITEMS_QUERY);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
@@ -57,21 +56,20 @@ const Documents = () => {
             <Header />
             <PageContent>
                 <Grid>
-                    {Object.keys(data).map(key => {
+                    {Object.keys(data).map((key) => {
                         const doc = new DocumentEntity(data[key]);
                         return (
                             <Link href="/document/[id]" as={"/document/" + doc.id} key={doc.id}>
                                 <a>
-                                    <DocumentPreview id={doc.id} name={doc.name}
-                                                     src={doc.thumbnail.url}/>
+                                    <DocumentPreview id={doc.id} name={doc.name} src={doc.thumbnail.url} />
                                 </a>
                             </Link>
-
                         );
                     })}
                 </Grid>
             </PageContent>
-        </>);
+        </>
+    );
 };
 
 export default Documents;

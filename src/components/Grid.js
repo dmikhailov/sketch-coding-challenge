@@ -1,17 +1,17 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledGrid = styled.div`
     display: flex;
     flex-wrap: wrap;
     flex-shrink: 0;
-    
+
     & > * {
         margin-right: 32px;
         margin-bottom: 32px;
-        
+
         transition: all 0.2s ease-in 0s;
         width: calc(16.6667%);
-        
+
         @media (max-width: 1440px) {
             width: calc(20%);
         }
@@ -20,7 +20,7 @@ const StyledGrid = styled.div`
         }
         @media (max-width: 768px) {
             width: calc(33.3333%);
-        }   
+        }
         @media (max-width: 590px) {
             width: calc(50%);
         }
@@ -30,9 +30,5 @@ const StyledGrid = styled.div`
     }
 `;
 
-const Grid = (props) => (
-    <StyledGrid>
-        {props.children}
-    </StyledGrid>
-);
+const Grid = (props) => <StyledGrid>{props.children}</StyledGrid>;
 export default Grid;

@@ -29,7 +29,7 @@ export class ArtboardEntity {
 
     get thumbnail() {
         const thumbnails = [];
-        this.data.files.forEach(file => Array.prototype.push.apply(thumbnails, file.thumbnails));
+        this.data.files.forEach((file) => Array.prototype.push.apply(thumbnails, file.thumbnails));
         let minWidth = thumbnails[0].width;
         let minIdx = 0;
         thumbnails.forEach((thumbnail, idx) => {
