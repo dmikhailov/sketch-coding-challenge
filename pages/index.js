@@ -69,12 +69,6 @@ const Documents = () => {
 
                         );
                     })}
-                    <Link href="/document/[id]" as="/document/Y8wDM">
-                        <a>
-                            <DocumentPreview id="Y8wDM" name="Fake document"
-                                             src="https://resources-live.sketch.cloud/files/d57fe1fd-c38e-4c1c-b349-4db14afe2685.l.png?Expires=1585270800&Signature=N~CU01PIz~ltcWb5Q2ZQkzzeT4CWgX5OnSiFmfwa-ghPj99gaysqneZyLAPCem1xEQIdyZjuLkBtrDSJDrPU--tDEQcAvoPE2qDY~9sgiomf-ZMIqbq8kKHwX90uAnDETiCUs~hEnyrChbx0sMLg1W62WwW28QhC55c9itWVM9U_&Key-Pair-Id=APKAJOITMW3RWOLNNPYA"/>
-                        </a>
-                    </Link>
                 </Grid>
             </PageContent>
         </>);

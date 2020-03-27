@@ -5,6 +5,7 @@ import withData from '../hoc/withData';
 import App from "next/app";
 import React from "react";
 import styled from "styled-components";
+import Meta from "../components/Meta";
 
 Router.onRouteChangeStart = () => {
     NProgress.start();
@@ -32,6 +33,7 @@ class SketchApp extends App {
         return (
             <ApolloProvider client={apollo}>
                 <PageContainer>
+                    <Meta/>
                     <Component {...pageProps} />
                 </PageContainer>
             </ApolloProvider>

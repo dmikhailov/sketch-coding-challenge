@@ -4,6 +4,8 @@ export class DocumentEntity {
 
     constructor(data) {
         this.data = data;
+        this._thumbnail = null;
+        this._artboards = null;
     }
 
     get id() {
@@ -15,11 +17,17 @@ export class DocumentEntity {
     }
 
     get thumbnail() {
-        return this.data.previewFiles[0].thumbnails.find(t => t.type === "M");
+        if (!this._thumbnail) {
+            this._thumbnail = this.data.previewFiles[0].thumbnails.find(t => t.type === "M");
+        }
+        return this._thumbnail;
     }
 
     get artboards() {
-        return this.data.version.document.artboards.entries.map(e => new ArtboardEntity(e));
+        if (!this._artboards) {
+            this._artboards = this.data.version.document.artboards.entries.map(e => new ArtboardEntity(e));
+        }
+        return this._artboards;
     }
 
     getBoardById(id) {
