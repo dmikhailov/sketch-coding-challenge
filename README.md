@@ -31,4 +31,7 @@ npm run dev
 
 Due lack of time following things were not implemented at all or was implemented in the not perfect way:
 
--   ...
+- some code, like ``if (loading) return <p>Loading...</p>;``, is duplicated, would be nice to extract in some generic component / level
+- some generic css code, variables, colors, sizes of paddings, for example, should be part of theme 
+- models are written in happy path way and do not take into account possibility of incomplete data
+- tests are missing
