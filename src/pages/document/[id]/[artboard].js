@@ -6,7 +6,7 @@ import { DocumentEntity } from "../../../model/DocumentEntity";
 import PageContent from "../../../components/PageContent";
 import Header from "../../../components/Header";
 import ArtboardNav from "../../../components/ArtboardNav";
-import { useRef } from "react";
+import { useState } from "react";
 
 const StyledArtboard = styled.div`
     width: 100%;
@@ -81,10 +81,7 @@ const StyledArtboard = styled.div`
 `;
 
 const Artboard = () => {
-    const artboardEl = useRef(null);
-    const onLoad = () => {
-        artboardEl.current.classList.remove("loading");
-    };
+    const [imgLoading, setImgLoading] = useState(true);
 
     const router = useRouter();
     const { id, artboard } = router.query;
@@ -117,9 +114,9 @@ const Artboard = () => {
             ></Header>
             <ArtboardNav list={doc.artboards} current={board} />
             <PageContent>
-                <StyledArtboard className="loading" ref={artboardEl} key={artboard}>
+                <StyledArtboard className={imgLoading ? "loading" : ""} key={artboard}>
                     <div className="loader" />
-                    <img onLoad={onLoad} src={board.file.url} />
+                    <img onLoad={() => setImgLoading(true)} src={board.file.url} />
                 </StyledArtboard>
             </PageContent>
         </>
