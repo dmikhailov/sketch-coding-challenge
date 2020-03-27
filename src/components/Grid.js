@@ -6,8 +6,7 @@ const StyledGrid = styled.div`
     flex-shrink: 0;
 
     & > * {
-        margin-right: 32px;
-        margin-bottom: 32px;
+        margin: 16px;
 
         transition: all 0.2s ease-in 0s;
         width: calc(16.6667%);
